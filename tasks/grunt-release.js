@@ -15,10 +15,6 @@ var Q = require('q');
 module.exports = function(grunt) {
     grunt.registerTask('release', 'Bump version, git tag, git push, npm publish', function(type) {
 
-        if (semver.gte(process.version, '6.0.0')) {
-            throw new Error('You should not publish when running Node.js 6. Please downgrade and publish again. https://github.com/npm/npm/issues/5082');
-        }
-
         function setup(file, type) {
             var pkg = grunt.file.readJSON(file);
             var newVersion = pkg.version;
